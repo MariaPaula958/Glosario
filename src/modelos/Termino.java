@@ -1,8 +1,11 @@
 package modelos;
 
 /**
- *
- * @author danie
+ * Clase que crea la estructura del Termino guardado en el glosario.
+ * 
+ * @author Daniel Antolinez
+ * @author Maria Paula Rodriguez
+ * @version 20231026
  */
 public class Termino {
     

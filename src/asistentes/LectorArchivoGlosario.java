@@ -7,11 +7,25 @@ import java.util.ArrayList;
 import java.util.List;
 import modelos.Termino;
 
+/**
+ * Clase la cual leera el archivo de texto y guardara los terminos
+ * 
+ * @author Daniel Antolinez
+ * @author Maria Paula Rodriguez
+ * @version 20231026
+ */
 public class LectorArchivoGlosario {
 
     public LectorArchivoGlosario(String archivo) {
     }
-
+    
+    /**
+     * Metodo que leera el archivo y retornará una lista de Terminos
+     * a la clase que llama el metodo
+     * 
+     * @param archivo
+     * @return List
+     */
     public List<Termino> leerArchivo(String archivo) {
         List<Termino> terminos = new ArrayList<>();
         String linea;

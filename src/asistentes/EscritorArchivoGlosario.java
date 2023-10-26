@@ -7,6 +7,12 @@ import java.io.OutputStreamWriter;
 import java.util.List;
 import modelos.Termino;
 
+/**
+ * Clase que se encarga de escribir el archivo de salida
+ * con los resultados de la operacion
+ * 
+ * @author Daniel Antolinez
+ */
 public class EscritorArchivoGlosario {
     private final String archivo;
 
