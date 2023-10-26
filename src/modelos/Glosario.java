@@ -1,62 +1,54 @@
 package modelos;
 
-import asistentes.EscritorGlosarioTerminos;
-import asistentes.LectorGlosarioTerminos;
-import java.io.IOException;
+import asistentes.EscritorArchivoGlosario;
+import asistentes.LectorArchivoGlosario;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.List;
 
 /**
  *
  * @author danie
  */
 public class Glosario {
-    
-    EscritorGlosarioTerminos escritor;
-    LectorGlosarioTerminos lector;
+    private List<Termino> terminos;
+    private final String archivo;
 
-    public Glosario() {
-        
+    public Glosario(String archivo) {
+        this.archivo = archivo;
+        terminos = new ArrayList<>();
     }
-    
-    public boolean agregarTermino(String nombreTermino, String descripcionTermino){
-        if(nombreTermino == null | descripcionTermino == null){
-            return false;
-        } else {
-            escritor = new EscritorGlosarioTerminos();
-            try {
-                escritor.escribirTermino("res/archivoGlosario.txt", nombreTermino, descripcionTermino);
-            } catch (IOException ex) {
-                return false;
+
+    public void guardarTermino(Termino termino) {
+        terminos.add(termino);
+        escribirArchivo();
+    }
+
+    public void escribirArchivo() {
+        EscritorArchivoGlosario escritor = new EscritorArchivoGlosario(archivo);
+        escritor.escribir(terminos);
+    }
+
+    public void leerArchivo() {
+        LectorArchivoGlosario lector = new LectorArchivoGlosario(archivo);
+        terminos = lector.leerArchivo(archivo);
+    }
+
+    public String buscarTermino(String nombre) {
+        leerArchivo();
+        for (Termino termino : terminos) {
+            if (termino.getNombre().equals(nombre)) {
+                return termino.getDescripcion();
             }
-            return true;
         }
+        return null;
     }
-    
-    public String buscarTermino(String nombreTermino){
-        String descripcion;
-        try{
-            lector = new LectorGlosarioTerminos();
-            descripcion = lector.leerTermino("res/archivoGlosario.txt", nombreTermino);
-        }catch (IOException e){
-            return null;
+
+    public String listarTerminos() {
+        leerArchivo();
+        String lista = "";
+        for (Termino termino : terminos) {
+            lista = lista + termino.getNombre() + " - " + termino.getDescripcion() + "\n";
         }
-        return descripcion;
+        return lista;
     }
-    
-    public String listarTerminos(){
-        
-        String resultado = "";
-        try {
-            lector = new LectorGlosarioTerminos();
-            resultado = lector.leerTermino("res/archivoGlosario.txt");
-        } catch (IOException e) {
-            return null;
-        }
-        
-        return resultado;
-        
-    }
-    
 }

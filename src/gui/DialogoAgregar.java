@@ -1,8 +1,5 @@
 package gui;
 
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-
 public class DialogoAgregar extends javax.swing.JDialog {
 
     private boolean control;
@@ -10,19 +7,19 @@ public class DialogoAgregar extends javax.swing.JDialog {
     public DialogoAgregar(VentanaPrincipal ventana, boolean modal) {
         super(ventana, modal);
         initComponents();
-        setLocationRelativeTo(this);
+        setLocationRelativeTo(null);
     }
 
     public boolean isControl() {
         return control;
     }
 
-    public JTextArea getTxtDescripcion() {
-        return txtDescripcion;
+    public String getTxtDescripcion() {
+        return txtDescripcion.getText();
     }
 
-    public JTextField getTxtTermino() {
-        return txtTermino;
+    public String getTxtTermino() {
+        return txtTermino.getText();
     }
 
     /**

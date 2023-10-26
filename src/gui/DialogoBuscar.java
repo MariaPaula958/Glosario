@@ -1,7 +1,5 @@
 package gui;
 
-import javax.swing.JTextField;
-
 public class DialogoBuscar extends javax.swing.JDialog {
 
     private boolean control;
@@ -9,15 +7,15 @@ public class DialogoBuscar extends javax.swing.JDialog {
     public DialogoBuscar(VentanaPrincipal ventana, boolean modal) {
         super(ventana, modal);
         initComponents();
-        setLocationRelativeTo(this);
+        setLocationRelativeTo(null);
     }
 
     public boolean isControl() {
         return control;
     }
 
-    public JTextField getTxtTermino() {
-        return txtTermino;
+    public String getTxtTermino() {
+        return txtTermino.getText();
     }
 
     

@@ -8,11 +8,11 @@ public class DialogoDescripcion extends javax.swing.JDialog {
     public DialogoDescripcion(VentanaPrincipal ventana, boolean modal) {
         super(ventana, modal);
         initComponents();
-        setLocationRelativeTo(this);
+        setLocationRelativeTo(null);
     }
 
-    public void setTxtDescripcion(JTextArea txtDescripcion) {
-        this.txtDescripcion = txtDescripcion;
+    public void setTxtDescripcion(String txtDescripcion) {
+        this.txtDescripcion.setText(txtDescripcion);
     }
     
 

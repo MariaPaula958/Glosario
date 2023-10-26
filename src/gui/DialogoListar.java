@@ -1,17 +1,15 @@
 package gui;
 
-import javax.swing.JTextArea;
-
 public class DialogoListar extends javax.swing.JDialog {
 
     public DialogoListar(VentanaPrincipal ventana, boolean modal) {
         super(ventana, modal);
         initComponents();
-        setLocationRelativeTo(this);
+        setLocationRelativeTo(null);
     }
 
-    public void setTxtListado(JTextArea txtListado) {
-        this.txtListado = txtListado;
+    public void setTxtListado(String txtListado) {
+        this.txtListado.setText(txtListado);
     }
 
     

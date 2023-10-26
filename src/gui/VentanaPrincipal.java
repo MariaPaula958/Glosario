@@ -1,12 +1,17 @@
 package gui;
 
 import javax.swing.JOptionPane;
+import modelos.Glosario;
+import modelos.Termino;
 
 public class VentanaPrincipal extends javax.swing.JFrame {
+    
+    private final Glosario glosario;
 
-    public VentanaPrincipal() {
+    public VentanaPrincipal(Glosario glosario) {
+        this.glosario = glosario;
         initComponents();
-        setLocationRelativeTo(this);
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -114,16 +119,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         DialogoListar listar = new DialogoListar(this, true);
+        listar.setTxtListado(glosario.listarTerminos());
         listar.setVisible(true);
-
-        //TODO mostrar el listado en el setTxtListado
     }//GEN-LAST:event_btnListarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         DialogoAgregar agregar = new DialogoAgregar(this, true);
         agregar.setVisible(true);
         if (agregar.isControl() & agregar.getTxtTermino() != null & agregar.getTxtDescripcion() != null) {
-            //TODO añadir el termino al listado
+            Termino t = new Termino(agregar.getTxtTermino(), agregar.getTxtDescripcion());
+            glosario.guardarTermino(t);
             JOptionPane.showMessageDialog(this, "Término añadido correctamente",
                     "Agregar", JOptionPane.INFORMATION_MESSAGE);
 
@@ -139,13 +144,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         buscar.setVisible(true);
 
         if (buscar.isControl() & buscar.getTxtTermino() != null) {
-            // TODO Comparar con los terminos actuales
-
-            descripcion.setVisible(true);
-            // TODO poner la descripción en el campo setTxtDescripcion
+            
+            String descripcionTermino = glosario.buscarTermino(buscar.getTxtTermino());
+            
+            if (descripcionTermino != null){
+                descripcion.setTxtDescripcion(descripcionTermino);
+                descripcion.setVisible(true);
+            }else{
+                JOptionPane.showMessageDialog(this, "El termino no fue encontrado en el glosario.", "Inconveniente", JOptionPane.ERROR_MESSAGE);
+            }
 
         } else {
-            JOptionPane.showMessageDialog(this, "Término no encontrado.", "Inconveniente", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese un termino.", "Inconveniente", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_btnBuscarActionPerformed

@@ -12,7 +12,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        VentanaPrincipal ventana = new VentanaPrincipal();
+        Glosario glosario = new Glosario("res/archivoGlosario.txt");
+        VentanaPrincipal ventana = new VentanaPrincipal(glosario);
         ventana.setVisible(true);
     }
     

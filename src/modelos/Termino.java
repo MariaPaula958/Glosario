@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelos;
 
 /**
@@ -10,40 +6,20 @@ package modelos;
  */
 public class Termino {
     
-    private String nombreTermino;
-    private String descripcionTermino;
+    private final String nombre;
+    private final String descripcion;
 
-    public Termino(String nombreTermino, String descripcionTermino) {
-        this.nombreTermino = nombreTermino;
-        this.descripcionTermino = descripcionTermino;
+    public Termino(String nombre, String descripcion) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
     }
 
-    /**
-     * @return the nombreTermino
-     */
-    public String getNombreTermino() {
-        return nombreTermino;
+    public String getNombre() {
+        return nombre;
     }
 
-    /**
-     * @param nombreTermino the nombreTermino to set
-     */
-    public void setNombreTermino(String nombreTermino) {
-        this.nombreTermino = nombreTermino;
-    }
-
-    /**
-     * @return the descripcionTermino
-     */
-    public String getDescripcionTermino() {
-        return descripcionTermino;
-    }
-
-    /**
-     * @param descripcionTermino the descripcionTermino to set
-     */
-    public void setDescripcionTermino(String descripcionTermino) {
-        this.descripcionTermino = descripcionTermino;
+    public String getDescripcion() {
+        return descripcion;
     }
     
 }
