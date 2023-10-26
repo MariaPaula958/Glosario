@@ -76,7 +76,7 @@ public class Glosario {
         leerArchivo();
         String lista = "";
         for (Termino termino : terminos) {
-            lista = lista + termino.getNombre() + " - " + termino.getDescripcion() + "\n";
+            lista = lista + termino.getNombre() + "\n";
         }
         return lista;
     }
